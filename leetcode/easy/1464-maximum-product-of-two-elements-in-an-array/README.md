@@ -44,19 +44,27 @@ Output: 12
 ## Solution
 
 **Language:** Java  
-**Runtime:** 5 ms (beats 42.28%)  
-**Memory:** 45.4 MB (beats 7.01%)  
-**Submitted:** 2026-07-27T13:55:12.847Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 44.6 MB (beats 60.68%)  
+**Submitted:** 2026-07-27T15:37:21.806Z  
 
 ```java
 class Solution {
     public int maxProduct(int[] nums) {
-        int n=nums.length;
-        int max=Integer.MIN_VALUE;
-       Arrays.sort(nums);
-       int first=nums[n-1];
-       int second=nums[n-2];
-       return (first-1)*(second-1);
+        int max1 = 0;
+        int max2 = 0;
+
+        for (int num : nums) {
+            if (num > max1) {
+                max2 = max1;
+                max1 = num;
+            } else if (num > max2) {
+                max2 = num;
+            }
+        }
+
+        return (max1 - 1) * (max2 - 1);
+
     }
 }
 ```
